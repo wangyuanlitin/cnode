@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Icon } from 'antd-mobile'
+import { Icon, List } from 'antd-mobile'
 import { loadTopicDetail } from '../actions/actionTypes'
+import './Topic.less'
 
 class Topic extends React.Component {
   componentDidMount() {
@@ -23,13 +24,13 @@ class Topic extends React.Component {
         </div>
         <div>
           <div>回帖</div>
-          <div>
+          <List>
             {topic.replies.map((item, index) => {
               return (
-                <div key={`replay-${index}`} dangerouslySetInnerHTML={{__html: item.content}} />
+                <List.Item key={`replay-${index}`} multipleLine><div dangerouslySetInnerHTML={{__html: item.content}} /></List.Item>
               )
             })}
-          </div>
+          </List>
         </div>
       </div>
     )
